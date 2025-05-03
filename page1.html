@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SplitZy</title>
+    <link rel="stylesheet" href="style_page1.css">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+        * {
+            font-family: Poppins;
+            font-weight: 400;
+        }
+
+
+    </style>
+
+</head>
+
+<body>
+    <h1 class="main">SplitZy</h1>
+    <h1 class="tgln">
+        Split Smart: Settle Group Expenses Effortlessly!
+    </h1>
+
+    <div class="container">
+        <main class="wrap">
+            <div class="user" id="User 1">
+                <span class="Name">
+                    <input id="Name 1" class="Name" type="text" placeholder="Name 1" value="Name 1">
+
+                </span>
+                <span class="totalExp">
+                    Rs. <span class="Rs"> 0.00 </span>
+                </span>
+                <div id="ExpWrap">
+                    <div class="Exp">
+                        <button class="remove-expense">X</button>
+                        <input class="what" type="text" name="what" placeholder="What?">
+                        <input class="howMuch" type="number" min="0" step="0.0" placeholder="How Much?">
+                        <div class="share-dropdown">
+                            <button type="button" class="share-btn"><img src="split.png" height="35px" alt=""></button>
+                            <div class="share-options">
+
+                                <!-- This will be populated dynamically based on number of users -->
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="More">
+                    <button id="moreBtn">More</button>
+                </div>
+
+
+            </div>
+
+
+        </main>
+
+
+
+    </div>
+    <div class="calc">
+        <button id="calcbtn" onclick="goToNextPage()">Calculate</button>
+    </div>
+
+
+    <script src="page1.js"></script>
+</body>
+
+</html>
