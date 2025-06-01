@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,20 +9,20 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-        *{
-            font-family:Poppins ;
+        * {
+            font-family: Poppins;
             font-weight: 400;
         }
-        
     </style>
-  
+
 </head>
+
 <body>
     <h1 class="main">SplitZy</h1>
     <h1 class="tgln">
         Split Smart: Settle Group Expenses Effortlessly!
     </h1>
-    
+
     <div class="container">
         <main>
             <div class="bill">
@@ -30,29 +31,37 @@
                 </div>
                 <div class="people">
                     <h2>Number of People</h2>
-                        
-                    <input class="pp" type="number" id="NoofPeople"  min="2"  
-                    placeholder="Enter number of people" >
+
+                    <input class="pp" type="number" id="NoofPeople" min="2" placeholder="Enter number of people">
                     <p class="msg">People can be excluded from single expenses later*</p>
                 </div>
                 <div class="people">
                     <h2>Give it a Name!</h2>
-                        
+
                     <input class="n" type="text" id="
-                    name" placeholder="Eg: Party" >
-                    
+                    name" placeholder="Eg: Party">
+
                 </div>
                 <a>
-                    <button  class="GoButton"  onclick="goToNextPage()"  disabled>GO! </button> 
+                    <button class="GoButton" onclick="goToNextPage()" disabled>GO! </button>
                 </a>
             </div>
-            
-            
+
+
         </main>
-        
-        
+
+
     </div>
 
     <script src="home.js"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX123"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-PQ5D6KYCYD');
+    </script>
 </body>
+
 </html>
