@@ -75,7 +75,7 @@ function calculateTotalExpense(parentUser) {
     let expenseInputs = parentUser.querySelectorAll(".howMuch");
     let total = 0;
 
-    expenseInputs.forEach((input) => {
+    expenseInputs.forEach(input => {
         let value = parseFloat(input.value);
         if (!isNaN(value)) {
             total += value;
@@ -88,12 +88,11 @@ function calculateTotalExpense(parentUser) {
     }
 }
 
-// UPDATED FUNCTION
 function updateShareOptions(userCount) {
     const allExpenses = document.querySelectorAll(".Exp");
     const allUsers = document.querySelectorAll(".user");
 
-    // Get actual names from inputs
+    // Get the user names from their inputs
     const userNames = Array.from(allUsers).map(user => {
         const input = user.querySelector(".Name input");
         return input ? input.value : "";
@@ -127,28 +126,52 @@ function addShareButtonFunctionality() {
     });
 }
 
+// Instead of adding listeners to each element individually,
+// use event delegation for focus on name inputs to clear default text.
+document.addEventListener("focusin", function (event) {
+    if (event.target && event.target.matches(".Name input")) {
+        const defaultText = event.target.getAttribute("data-default");
+        if (event.target.value === defaultText) {
+            event.target.value = "";
+        }
+    }
+});
+
 document.addEventListener("DOMContentLoaded", function () {
     let personInput = parseInt(localStorage.getItem("personInput")) || 1;
     let container = document.querySelector(".container");
     let original = document.querySelector(".wrap");
 
+    // Set up additional (cloned) user entries if needed
     if (personInput) {
         for (let i = 2; i <= personInput; i++) {
             let clone = original.cloneNode(true);
-            clone.querySelector(".user").id = "User " + i;
-            clone.querySelector(".Name input").placeholder = "Name " + i;
-            clone.querySelector(".Name input").value = "Name " + i;
-            clone.querySelector(".Name input").id = "Name " + i;
+            let nameInput = clone.querySelector(".Name input");
+            let defaultName = `Name ${i}`;
+            nameInput.placeholder = defaultName;
+            nameInput.value = defaultName;
+            nameInput.id = `Name ${i}`;
+            // Store the default value in a data attribute
+            nameInput.setAttribute("data-default", defaultName);
+
+            let userDiv = clone.querySelector(".user");
+            userDiv.id = `User ${i}`;
 
             let expWrap = clone.querySelector("#ExpWrap");
-            expWrap.id = "ExpWrap" + i;
+            expWrap.id = `ExpWrap${i}`;
 
             let moreBtn = clone.querySelector("#moreBtn");
-            moreBtn.id = "moreBtn" + i;
+            moreBtn.id = `moreBtn${i}`;
 
             container.appendChild(clone);
         }
     }
+
+    // For the initial name inputs, set their data-default attribute
+    document.querySelectorAll(".Name input").forEach((input, index) => {
+        let defaultName = `Name ${index + 1}`;
+        input.setAttribute("data-default", defaultName);
+    });
 
     updateShareOptions(personInput);
     addShareButtonFunctionality();
@@ -210,7 +233,6 @@ document.addEventListener("input", function (event) {
         calculateTotalExpense(parentUser);
     }
 
-    // Update share options live when name inputs change
     if (event.target && event.target.matches(".Name input")) {
         const personInput = document.querySelectorAll(".user").length;
         updateShareOptions(personInput);
@@ -220,7 +242,7 @@ document.addEventListener("input", function (event) {
 function goToNextPage() {
     const transactions = extractTransactionsFromUI();
     const settlements = simplifyDebts(transactions);
-    
+
     localStorage.setItem("settlements", JSON.stringify(settlements));
     window.location.href = "page2.html";
 }
