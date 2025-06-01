@@ -6,8 +6,8 @@ document.addEventListener("DOMContentLoaded", () => {
         const row = document.createElement("tr");
         const cell = document.createElement("td");
         cell.colSpan = 3;
-        // cell.textContent = "No settlements needed!";
         cell.style.textAlign = "center";
+        cell.textContent = "All accounts are settled";
         row.appendChild(cell);
         tbody.appendChild(row);
     } else {
