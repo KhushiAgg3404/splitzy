@@ -1,18 +1,31 @@
 const personInput = document.querySelector("#NoofPeople");
 const GObtn = document.querySelector(".GoButton");
+const warning = document.getElementById("warningMsg");
 
-// Enable the button only if input has a value
+// Enable/Disable GO button and show warning based on input
 personInput.addEventListener("input", () => {
-    GObtn.disabled = !personInput.value; // Simplified condition
+    const value = parseInt(personInput.value);
+
+    if (value > 50) {
+        warning.style.display = "block";
+        GObtn.disabled = true;
+    } else if (value >= 2) {
+        warning.style.display = "none";
+        GObtn.disabled = false;
+    } else {
+        warning.style.display = "none";
+        GObtn.disabled = true;
+    }
 });
 
+// Function to go to next page
 function goToNextPage() {
-    const numberOfPeople = personInput.value; // Get input value
+    const numberOfPeople = parseInt(personInput.value);
 
-    if (numberOfPeople > 1) {
-        localStorage.setItem("personInput", numberOfPeople); // Store in localStorage
-        window.location.href = "page1.html"; // Navigate to next page
+    if (numberOfPeople >= 2 && numberOfPeople <= 50) {
+        localStorage.setItem("personInput", numberOfPeople);
+        window.location.href = "page1.html";
     } else {
-        alert("Please enter a valid number!");
+        alert("Please enter a valid number between 2 and 50!");
     }
 }
