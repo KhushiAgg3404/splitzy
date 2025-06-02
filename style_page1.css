@@ -152,7 +152,10 @@ input::-webkit-inner-spin-button {
 }
 
 .remove-expense:hover {
-    background-color: rgb(148, 3, 3);
+    color: #d8000c;
+    background-color: #ffbaba;
+    border: 1px solid #d8000c;
+    font-weight: bold;
 }
 
 /* Ensure the parent .Exp div aligns items properly */
